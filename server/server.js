@@ -1,24 +1,23 @@
 const express = require("express");
-const connectDB = require("./config/db");
+const connectDB = require("./config/db")
+// const cookieParser = require("cookie-parser");
+const usersRoute = require("./routes/users");
+const myRouter = require("./routes/products");
+
+
 
 const app = express();
 
-// connect DB
+//DB Config
+
 connectDB();
 
-//DB Config
-const db = require("./config/default").mongoURI;
-
-//Init Middleware
 app.use(express.json({ extended: false }));
+// app.use(cookieParser());
+// Routes
+app.use("/api/users", usersRoute);
+app.use("/api/products", myRouter);
+//server port
+const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
-
-// Use Routes
-app.use("/api/users", require("./routes/api/users"));
-// app.use('/api/profile', require('./routes/api/profile'));
-// app.use('/api/posts', require('./routes/api/posts'));
-app.use("/api/auth", require("./routes/api/auth"));
-
-const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
