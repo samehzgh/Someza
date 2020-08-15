@@ -27,13 +27,13 @@ router
   .get("/logout", auth, logout)
 
   //------------------delete userby id (params)---------------------//
-  .delete("/:id/delete", userDelete)
+  .delete("/user/:id/delete", userDelete)
 
   //------------------Get user by id (params)---------------------//
-  .get("/:id", userGet)
+  .get("/user/:id", userGet)
 
   //------------------Get user by id (params)---------------------//
 
-  .get("/", getAllUsers);
+  .get("/all", getAllUsers);
 
 module.exports = router;

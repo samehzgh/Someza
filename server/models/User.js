@@ -3,10 +3,13 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const saltRounds = 10;
-MAX_LOGIN_ATTEMPTS = 5,
-LOCK_TIME = 2 * 60 * 60 * 1000;
+(MAX_LOGIN_ATTEMPTS = 5), (LOCK_TIME = 2 * 60 * 60 * 1000);
 const UserSchema = mongoose.Schema({
   name: {
+    type: String,
+    maxlength: 50,
+  },
+  lastname: {
     type: String,
     maxlength: 50,
   },
@@ -16,15 +19,20 @@ const UserSchema = mongoose.Schema({
     unique: 1,
     required: true,
   },
+
+  phoneNumber: {
+    type: Number,
+  },
   password: {
     type: String,
     minlength: 6,
     required: true,
   },
-  lastname: {
+  address: {
     type: String,
-    maxlength: 50,
+    
   },
+
   role: {
     type: Number,
     default: 0,
@@ -35,9 +43,7 @@ const UserSchema = mongoose.Schema({
   token: {
     type: String,
   },
-  tokenExp: {
-    type: Number,
-  },
+
   date: {
     type: Date,
     default: Date.now,
@@ -51,8 +57,6 @@ const UserSchema = mongoose.Schema({
     type: Number,
   },
 });
-
-
 
 const User = mongoose.model("User", UserSchema);
 

@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "Someza backend",
   "main": "server.js",
-   "scripts": {
+  "scripts": {
     "start": "node server/server.js",
     "backend": "nodemon server/server.js",
     "frontend": "npm run front --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
   },
   "author": "Someza",
-  "license": "ISC" ,
+  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",

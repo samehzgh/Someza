@@ -15,15 +15,15 @@ router
   .post("/add", productAdd)
 
   //------------------Get Product with id (params)-----------//
-  .get("/:id", productGet)
+  .get("/product/:id", productGet)
 
   //------------------Update Product---------------------//
-  .put("/:id/update", productUpdate)
+  .put("/product/:id/update", productUpdate)
 
   //------------------Delete Product---------------------//
-  .delete("/:id/delete", productDelete)
+  .delete("/product/:id/delete", productDelete)
 
   //------------------Get All Products---------------------//
-  .get("/", getAllProducts);
+  .get("/all", getAllProducts);
 
 module.exports = router;
