@@ -11,7 +11,7 @@ const router = express.Router();
 
 
 const register = async (req, res) => {
-  const { name, lastname, email, password ,phoneNumber} = req.body;
+  const { name, lastname, email, password ,phoneNumber ,address} = req.body;
   console.log(req.body);
   try {
     // Save to  database
@@ -20,7 +20,8 @@ const register = async (req, res) => {
       lastname,
       email,
       password,
-      phoneNumber
+      phoneNumber,
+      address
     });
     //Crypt password
     const salt = await bcrypt.genSalt(10);
@@ -51,7 +52,9 @@ const getUser = async (req, res) => {
     lastname: user.lastname,
     role: user.role,
     address: user.address,
-    phoneNumber: user.phoneNumber
+    phoneNumber: user.phoneNumber,
+    address: user.address
+
   });
   console.log(user,"user back");
 };
@@ -72,7 +75,10 @@ const userGet = async (req, res) => {
     lastname: user.lastname,
     role: user.role,
     address: user.address,
-    phoneNumber: user.phoneNumber
+    
+    phoneNumber: user.phoneNumber,
+    address: user.address
+
   });
   console.log(user,"user back");
 };

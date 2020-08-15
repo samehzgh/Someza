@@ -37,9 +37,7 @@ const UserSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
-  avatar: {
-    type: String,
-  },
+  
   token: {
     type: String,
   },
