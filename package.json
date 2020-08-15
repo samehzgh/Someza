@@ -1,28 +1,31 @@
 {
-  "name": "mernstack",
+  "name": "someza",
   "version": "1.0.0",
-  "description": "Mern Stack BoilerPlate",
+  "description": "Someza backend",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+   "scripts": {
     "start": "node server/server.js",
-    "server": "cd server && npm start",
-    "client": "cd client && npm start",
-    "dev": "concurrently \"npm run server\" \"npm run start --prefix client\""
+    "backend": "nodemon server/server.js",
+    "frontend": "npm run front --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/marwenilo/Mern-Boilerplate.git"
+  "author": "Someza",
+  "license": "ISC" ,
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.1",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.5.0",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.9.19"
   },
-  "author": "Marwen Magri",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/marwenilo/Mern-Boilerplate/issues"
-  },
-  "homepage": "https://github.com/marwenilo/Mern-Boilerplate#readme",
   "devDependencies": {
-    "concurrently": "^5.1.0",
-    "nodemon": "^2.0.3"
-  },
-  "dependencies": {}
+    "concurrently": "^5.2.0",
+    "mocha": "^8.0.1",
+    "nodemon": "^2.0.4"
+  }
 }

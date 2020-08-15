@@ -1,0 +1,4 @@
+{
+  "mongoURI":"mongodb+srv://user:user123@cluster0.s1sfs.gcp.mongodb.net/Someza?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
+}
