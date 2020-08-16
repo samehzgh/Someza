@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { auth } = require("../middleware/auth");
-
+const auth = require("../middleware/auth");
+const acl = require("../middleware/acl");
 const {
   register,
   login,
@@ -27,13 +27,13 @@ router
   .get("/logout", auth, logout)
 
   //------------------delete userby id (params)---------------------//
-  .delete("/user/:id/delete", userDelete)
+  .delete("/user/:id/delete", auth,acl,userDelete)
 
   //------------------Get user by id (params)---------------------//
-  .get("/user/:id", userGet)
+  .get("/user/:id",auth, userGet)
 
-  //------------------Get user by id (params)---------------------//
+  //------------------Get all users---------------------//
 
-  .get("/all", getAllUsers);
+  .get("/all",auth,acl, getAllUsers);
 
 module.exports = router;

@@ -1,6 +1,8 @@
 const express = require("express");
-const router = express.Router();
+const auth = require("../middleware/auth");
+const acl = require("../middleware/acl");
 
+const router = express.Router();
 const {
   productAdd,
   productGet,
@@ -12,16 +14,16 @@ const {
 router
 
   //------------------Add Product---------------------//
-  .post("/add", productAdd)
+  .post("/add",auth,acl, productAdd)
 
   //------------------Get Product with id (params)-----------//
   .get("/product/:id", productGet)
 
   //------------------Update Product---------------------//
-  .put("/product/:id/update", productUpdate)
+  .put("/product/:id/update",auth,acl, productUpdate)
 
   //------------------Delete Product---------------------//
-  .delete("/product/:id/delete", productDelete)
+  .delete("/product/:id/delete",auth,acl, productDelete)
 
   //------------------Get All Products---------------------//
   .get("/all", getAllProducts);

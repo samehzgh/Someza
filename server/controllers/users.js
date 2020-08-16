@@ -21,7 +21,8 @@ const register = async (req, res) => {
       email,
       password,
       phoneNumber,
-      address
+      address,
+      role: 0
     });
     //Crypt password
     const salt = await bcrypt.genSalt(10);
@@ -42,23 +43,22 @@ const register = async (req, res) => {
 //-------------------Get user by token ----------------//
 
 const getUser = async (req, res) => {
-  const user = await User.findById(req.user.id);
-  res.status(200).json({
-    _id: user.id,
-    isAdmin: user.role === 0 ? false : true,
-    isAuth: true,
-    email: user.email,
-    name: user.name,
-    lastname: user.lastname,
-    role: user.role,
-    address: user.address,
-    phoneNumber: user.phoneNumber,
-    address: user.address
+  const {id: _id, role, email, name, lastname, address, phoneNumber} = await User.findById(req.user.id);
 
+  res.status(200).json({
+    _id,
+    isAdmin: role === 0 ? false : true,
+    isAuth: true,
+    email,
+    name,
+    lastname,
+    role,
+    address,
+    phoneNumber,
   });
   console.log(user,"user back");
 };
-
+ 
 
 
 //-------------------Get user by id from Params-------------//

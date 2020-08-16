@@ -2,16 +2,8 @@ const Product = require("../models/Product");
 
 //----------Add a product-------------//
 
-const productAdd = (req, res) => {
-  let product = new Product({
-    name: req.body.name,
-    reference: req.body.reference,
-    description: req.body.description,
-    category: req.body.category,
-    type: req.body.type,
-    material: req.body.material,
-    price: req.body.price,
-  });
+const productAdd = ({body}, res, next) => {
+  let product = new Product(body);
 
   product.save(function (err) {
     if (err) {
