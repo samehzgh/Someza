@@ -1,39 +1,43 @@
-const express = require("express");
+const express = require('express');
+
 const router = express.Router();
-const auth = require("../middleware/auth");
-const acl = require("../middleware/acl");
+const auth = require('../middleware/auth');
+
 const {
-  register,
-  login,
-  getUser,
-  logout,
-  userDelete,
-  userGet,
-  getAllUsers,
-} = require("../controllers/users");
+  register, login, getUser, logout,
+} = require('../controllers/users');
+
+const { productGet, getAllProducts } = require('../controllers/products');
+
+const { orderAdd, getOrders } = require('../controllers/orders');
 
 router
 
-  //------------------Register---------------------//
-  .post("/register", register)
+  // ------------------Register---------------------//
+  .post('/register', register)
 
-  //------------------Get user by token---------------------//
-  .get("/login", auth, getUser)
+  // ------------------Get user by token---------------------//
+  .get('/user', auth, getUser)
 
-  //------------------Login---------------------//
-  .post("/login", login)
+  // ------------------Login---------------------//
+  .post('/login', login)
 
-  //------------------Logout---------------------//
-  .get("/logout", auth, logout)
+  // ------------------Logout---------------------//
+  .get('/logout', auth, logout)
 
-  //------------------delete userby id (params)---------------------//
-  .delete("/user/:id/delete", auth,acl,userDelete)
+// -----------------Product------------//
+// ---------------------------------//
 
-  //------------------Get user by id (params)---------------------//
-  .get("/user/:id",auth, userGet)
+  // ------------------Get Product with id (params)-----------//
+  .get('/products/:id', productGet)
 
-  //------------------Get all users---------------------//
+  // ------------------Get All Products---------------------//
+  .get('/products', getAllProducts)
 
-  .get("/all",auth,acl, getAllUsers);
+// ------------------add order by id (params)---------------------//
+
+  .post('/products/:productId/purchase', auth, orderAdd)
+
+  .post('/orders', auth, getOrders);
 
 module.exports = router;
