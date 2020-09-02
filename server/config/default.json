@@ -1,4 +1,4 @@
 {
-  "mongoURI":"mongodb+srv://user:user123@cluster0.s1sfs.gcp.mongodb.net/Someza?retryWrites=true&w=majority",
+  "mongoURI":"mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false",
   "jwtSecret": "mysecrettoken"
 }
